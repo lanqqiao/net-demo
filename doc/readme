@@ -1,0 +1,12 @@
+netty.chatRoom（群聊室）
+服务端业务逻辑处理程序：SimpleChatServerHandler
+
+服务端通道管道初始化：SimpleChatServerInitial
+
+服务端启动：SimpleChatServer
+
+客户端业务逻辑处理程序：SimpleChatClientHandler
+
+客户端通道管道初始化：SimpleChatClientInitial
+
+客户端启动类：SimpleChatClient
