@@ -1,5 +1,6 @@
 package com.lqq.demo;
 
+import com.google.common.hash.BloomFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
