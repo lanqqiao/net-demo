@@ -1,4 +1,4 @@
-package com.lqq.demo.nio.tcpSocket;
+package com.lqq.demo.nio.SceondStudy;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -11,56 +11,51 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
 
-public class NIOServer {
+public class NioServer {
     public static void main(String[] args) throws IOException {
-        //1. 创建选择器
         Selector selector = Selector.open();
 
-        //2.将通道注册到选择器上
         ServerSocketChannel ssChannel = ServerSocketChannel.open();
         ssChannel.configureBlocking(false);
-        //通道必须配置为非阻塞模式，否则使用选择器就没有任何意义了
         ssChannel.register(selector, SelectionKey.OP_ACCEPT);
 
-        ServerSocket ss=ssChannel.socket();
-        ss.bind(new InetSocketAddress("127.0.0.1",8888));
+        ServerSocket ss = ssChannel.socket();
+        ss.bind(new InetSocketAddress("127.0.0.1", 8899));
 
-        while (true){
-            //3. 监听事件
+
+        while (true) {
             selector.select();
 
-            //4. 获取到达的事件
             Set<SelectionKey> keys = selector.selectedKeys();
-            Iterator<SelectionKey> keyIterator = keys.iterator();
-            while (keyIterator.hasNext()) {
-                SelectionKey key = keyIterator.next();
+            Iterator<SelectionKey> iterator = keys.iterator();
+
+            while (iterator.hasNext()) {
+                SelectionKey key = iterator.next();
                 if (key.isAcceptable()) {
                     ServerSocketChannel ssChannel1 = (ServerSocketChannel) key.channel();
 
-                    // 服务器会为每个新连接创建一个 SocketChannel
                     SocketChannel sChannel = ssChannel1.accept();
                     sChannel.configureBlocking(false);
 
-                    // 这个新连接主要用于从客户端读取数据
                     sChannel.register(selector, SelectionKey.OP_READ);
-
-                } else if (key.isReadable()) {
-                    SocketChannel sChannel = (SocketChannel) key.channel();
-                    System.out.println(readDataFromSocketChannel(sChannel));
-                    sChannel.close();
+                    System.out.println("服务器链接成功。");
                 }
-                // 防止重复操作
-                keyIterator.remove();
+                if (key.isReadable()) {
+                    SocketChannel channel = (SocketChannel) key.channel();
+                    ByteBuffer buffer = ByteBuffer.allocate(1024);
+                    channel.read(buffer);
+                    System.out.println("收到客户端消息：" + new String(buffer.array()));
+                    channel.close();// 就因为少了这句话，调了半天。。不停的能接受到读的数据。
+                }
+                iterator.remove();
             }
+
         }
+
+
+
     }
 
-    /**
-     * 读取数据
-     * @param sChannel
-     * @return
-     * @throws IOException
-     */
     private static String readDataFromSocketChannel(SocketChannel sChannel) throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         StringBuilder data = new StringBuilder();
@@ -82,5 +77,4 @@ public class NIOServer {
         }
         return data.toString();
     }
-
 }

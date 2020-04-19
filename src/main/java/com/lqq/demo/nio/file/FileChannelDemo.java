@@ -1,9 +1,6 @@
 package com.lqq.demo.nio.file;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -36,6 +33,8 @@ public class FileChannelDemo {
         fc.write(byteBuffer2);
         //3.关闭FileChannel
         fc.close();
+
+
     }
 
     /**
