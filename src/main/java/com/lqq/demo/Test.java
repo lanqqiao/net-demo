@@ -15,13 +15,14 @@ import java.util.Map;
 public class Test {
 
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>();
-        for (int i =0; i< 10; i++) {
-            list.add(i);
-        }
-        list.add(11);
+        int i = 1;
+        int j = ++i;
+        System.out.println(j);
 
-        Map<String, Object> map = new HashMap<>();
+        int k = 1;
+        k = k++;
+        System.out.println(k);
+
     }
 
 
