@@ -1,16 +1,12 @@
-package com.lqq.demo.netty2.heart;
+package com.lqq.demo.netty2.heartbeat;
 
-import com.lqq.demo.netty2.groupchat.GroupChatServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
@@ -50,7 +46,7 @@ public class MyServer {
 
                             pipeline.addLast("decoder", new IdleStateHandler(3, 5, 7, TimeUnit.SECONDS));
                             // 加入一个对空闲检测进一步处理的handler 自定义
-                            pipeline.addLast(null);
+                            pipeline.addLast(new MyServerHandler());
 
                         }
                     });
