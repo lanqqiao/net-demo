@@ -62,13 +62,13 @@ public class NettyClient {
 
             System.out.println("客户端 ok...");
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 7001).sync();
-//            channelFuture.channel().closeFuture().sync();
+//            channelFuture.channel().closeFuture().sync(); // 坑1：导致阻塞
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         finally {
-            executors.shutdownGracefully();
+//            executors.shutdownGracefully();  // 坑2：导致服务端收不到消息，应该也是阻塞了
         }
 
 
