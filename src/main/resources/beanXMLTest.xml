@@ -5,6 +5,9 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="testBean" class="com.lqq.demo.spring.TestBean">
         <meta key="testStr" value="ababab"/>
-        
+
+        <constructor-arg index="0" type="java.lang.String" name="showMsg">
+            <value>你好</value>
+        </constructor-arg>
     </bean>
 </beans>

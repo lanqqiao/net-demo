@@ -8,6 +8,10 @@ import org.springframework.core.io.Resource;
 public class TestBean {
     public String showMsg;
 
+    public TestBean(String showMsg) {
+        this.showMsg = showMsg;
+    }
+
     public String getShowMsg() {
         return showMsg;
     }
