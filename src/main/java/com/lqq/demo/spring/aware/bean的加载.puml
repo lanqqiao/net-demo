@@ -1,0 +1,8 @@
+@startuml
+main -> AbstractBeanFactory: getBean(String name, \nClass<T> requiredType, Object... args)
+    activate AbstractBeanFactory
+    AbstractBeanFactory -> AbstractBeanFactory: doGetBean(name, requiredType, args, false)
+    AbstractBeanFactory -> AbstractBeanFactory: transformedBeanName(name):转换beanName
+    AbstractBeanFactory -> AbstractBeanFactory: transformedBeanName(name):转换beanName
+return Object
+@enduml
