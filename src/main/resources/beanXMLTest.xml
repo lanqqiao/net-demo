@@ -9,6 +9,7 @@
         <constructor-arg index="0" type="java.lang.String" name="showMsg">
             <value>你好</value>
         </constructor-arg>
+        <property name="name" value="abccccc"></property>
     </bean>
 
     <bean id="test" class="com.lqq.demo.spring.aware.Test"></bean>
