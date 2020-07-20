@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="bfpp" class="com.lqq.demo.spring.simplePostProcess.ObscenityRemovingBeanFactoryPostProcessor">
+        <property name="obscenties">
+            <set>
+                <value>bollocks</value>
+                <value>winky</value>
+                <value>Microsoft</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="simpleBean" class="com.lqq.demo.spring.TestBean">
+        <property name="name" value="bollocks"/>
+        <property name="psw" value="Microsoft"/>
+        <property name="showMsg" value="xxxxxx"></property>
+
+    </bean>
+
+</beans>

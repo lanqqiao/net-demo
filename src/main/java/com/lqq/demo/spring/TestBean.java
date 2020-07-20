@@ -19,6 +19,8 @@ public class TestBean {
 
     public String name;
 
+    public String psw;
+
 //    public TestBean(String showMsg) {
 //        this.showMsg = showMsg;
 //    }
@@ -37,6 +39,20 @@ public class TestBean {
 
     public void setShowMsg(String showMsg) {
         this.showMsg = showMsg;
+    }
+
+    public String getPsw() {
+        return psw;
+    }
+
+    public void setPsw(String psw) {
+        this.psw = psw;
+    }
+
+    @Override
+    public String toString() {
+        return "TestBean{" + "userService=" + userService + ", showMsg='" + showMsg + '\'' + ", name='" + name + '\''
+            + ", psw='" + psw + '\'' + '}';
     }
 
     public static void main(String[] args) {
