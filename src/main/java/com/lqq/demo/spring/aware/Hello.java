@@ -1,5 +1,7 @@
 package com.lqq.demo.spring.aware;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 /**
  * @Classname Hello
  * @Description TODO
@@ -7,6 +9,8 @@ package com.lqq.demo.spring.aware;
  * @Created by lanqq
  */
 public class Hello {
+
+    Test test;
 
     public void say() {
         System.out.println("hello");

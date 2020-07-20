@@ -16,6 +16,8 @@ public class Test implements BeanFactoryAware {
 
     private BeanFactory beanFactory;
 
+    private Hello hello;
+
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         this.beanFactory = beanFactory;

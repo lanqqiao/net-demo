@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <!--<property name="customEditors">-->
+            <!--<map>-->
+                <!--<entry key="java.util.Date" value="com.lqq.demo.spring.application.DatePropertyEditor">-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="com.lqq.demo.spring.application.DatePropertyEditorRegistar"></bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="userManager" class="com.lqq.demo.spring.application.UserManager">
+        <property name="dataValue">
+            <value>2020-07-19</value>
+        </property>
+    </bean>
+
+</beans>

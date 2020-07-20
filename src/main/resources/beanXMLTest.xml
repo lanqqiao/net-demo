@@ -6,13 +6,14 @@
     <bean id="testBean" class="com.lqq.demo.spring.TestBean">
         <meta key="testStr" value="ababab"/>
 
-        <constructor-arg index="0" type="java.lang.String" name="showMsg">
-            <value>你好</value>
-        </constructor-arg>
+        <!--<constructor-arg index="0" type="java.lang.String" name="showMsg">-->
+            <!--<value>你好</value>-->
+        <!--</constructor-arg>-->
         <property name="name" value="abccccc"></property>
     </bean>
 
     <bean id="test" class="com.lqq.demo.spring.aware.Test"></bean>
     <bean id="hello" class="com.lqq.demo.spring.aware.Hello"></bean>
+
 
 </beans>
