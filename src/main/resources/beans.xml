@@ -28,4 +28,12 @@
     <aop:aspectj-autoproxy/>
     <bean id="test" class="com.lqq.demo.spring.aop.TestBean"></bean>
     <bean class="com.lqq.demo.spring.aop.AspectJTest"></bean>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>msg</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
