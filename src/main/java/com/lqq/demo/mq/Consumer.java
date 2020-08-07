@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.List;
 
@@ -27,12 +28,12 @@ public class Consumer {
         /*
          * Specify name server addresses.
          */
-        Consumer.setNamesrvAddr("192.168.7.146:9876");
+        Consumer.setNamesrvAddr("192.168.7.146:9876;192.168.7.78:9876");
         /*
          * Specify where to start in case the specified Consumer group is a brand new one.
          */
         Consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_FIRST_OFFSET);
-        //Consumer.setMessageModel(MessageModel.BROADCASTING);
+        Consumer.setMessageModel(MessageModel.BROADCASTING);
         /*
          * Subscribe one more more Topics to consume.
          */

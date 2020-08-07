@@ -5,7 +5,10 @@ import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
  import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
  import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
  import org.apache.rocketmq.common.message.MessageExt;
- import java.util.List;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 public class ScheduledMessageConsumer {
 
@@ -13,18 +16,19 @@ public class ScheduledMessageConsumer {
         // Instantiate message consumer
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("ExampleConsumer");
         // Subscribe topics
-        consumer.setNamesrvAddr("192.168.7.146:9876");
-        consumer.subscribe("TestTopic", "*");
+        consumer.setNamesrvAddr("192.168.7.146:9876;192.168.7.78:9876");
+        consumer.subscribe("TopicTest", "*");
         // Register message listener
         consumer.registerMessageListener(new MessageListenerConcurrently() {
             @Override
             public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> messages, ConsumeConcurrentlyContext context) {
                 for (MessageExt message : messages) {
                     // Print approximate delay time period
-                    System.out.println(System.currentTimeMillis());
-                    System.out.println(message.getStoreTimestamp());
+                    System.out.println("ReceiveTime:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+                    System.out.println("storeTime:" + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(message.getStoreTimestamp())));
+
                     System.out.println("Receive message[msgId=" + message.getMsgId() + "] "
-                            + (System.currentTimeMillis() - message.getStoreTimestamp()) + "ms later");
+                            + (System.currentTimeMillis()));
                 }
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             }

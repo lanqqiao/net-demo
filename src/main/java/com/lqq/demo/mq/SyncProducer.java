@@ -10,7 +10,7 @@ public class SyncProducer {
         //Instantiate with a Producer group name.
         DefaultMQProducer Producer = new
             DefaultMQProducer("TopicTestGroup");
-        Producer.setNamesrvAddr("192.168.7.146:9876");
+        Producer.setNamesrvAddr("192.168.7.78:9876");
         //Launch the instance.
         Producer.start();
         for (int i = 0; i < 10; i++) {
