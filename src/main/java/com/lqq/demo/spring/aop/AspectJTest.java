@@ -2,6 +2,9 @@ package com.lqq.demo.spring.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @ClassName AspectJTest
@@ -14,6 +17,7 @@ import org.aspectj.lang.annotation.*;
 public class AspectJTest {
 
     @Pointcut("execution(* *.test(..))")
+//    @Pointcut("execution(* *(..))")
     public void test() {
 
     }
@@ -39,6 +43,17 @@ public class AspectJTest {
         }
         System.out.println("after1");
         return o;
+    }
+
+    public static void main(String[] args) {
+
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
+        ac.register(SpringAOPconfig.class);
+//        ac.scan("com.lqq.demo.spring.aop");
+        ac.refresh();
+        AopTestBean bean = ac.getBean(AopTestBean.class);
+        System.out.println(bean.test(1, 2));
+
     }
 
 }

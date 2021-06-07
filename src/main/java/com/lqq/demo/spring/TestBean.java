@@ -66,7 +66,7 @@ public class TestBean implements BeanFactoryAware, ApplicationContextAware {
 //        Resource resource = new ClassPathResource("beanXMLTest.xml");
 //        BeanFactory fa = new XmlBeanFactory(resource);
 //        TestBean bean = (TestBean)fa.getBean("testBean");
-        ApplicationContext bf = new ClassPathXmlApplicationContext("beanXMLText.xml");
+        ApplicationContext bf = new ClassPathXmlApplicationContext("beanXMLTest.xml");
         TestBean bean = (TestBean)bf.getBean("testBean");
         bean.setShowMsg("测试消息");
         System.out.println(bean.getShowMsg());
